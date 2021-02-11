@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 function pong() { 
 
   
-console.log('Bunny is God')
+console.log('Bunny Uptime Ping')
 } 
 
 setInterval(pong, 60000);
