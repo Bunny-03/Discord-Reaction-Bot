@@ -1,23 +1,24 @@
-{
-// server.js
-// where your node app starts
-
-// we've started you off with Express (https://expressjs.com/)
-// but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
+const fetch = require ('node-fetch')
 const app = express();
 
-// https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendStatus(200);
-});
-// listen for requests :)
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
-  
-}
 
+app.get("/", (req, res) => {
+  res.send('Hello There , This is Reaction Bot and now its online Thanks (BunnySupport)')
+});
+
+function pong() { 
+
+  
+console.log('Bunny is God')
+} 
+
+setInterval(pong, 60000);
+
+// listen for requests | Don't change this!
+const listener = app.listen(process.env.PORT, () => {
+  console.log("Listening on PORT " + listener.address().port);
+});
 
 const { Client, MessageEmbed } = require('discord.js');
 
@@ -32,7 +33,7 @@ client.login(process.env.BOT_TOKEN);
 client.on('ready', async () => {
 
     console.log('Ready and start reacting!');
-    client.user.setActivity('+help Bunny Pro', { type: 'WATCHING' });
+    client.user.setActivity('-help Coded by KG彡ζ͜͡𝐆𝐖➣INCASX丶Bunny#6229', { type: 'WATCHING' });
 
     let reactions = JSON.parse(fs.readFileSync('./config/reactions.json', 'utf8'));
 
@@ -61,7 +62,7 @@ client.on('message', async message => {
     let prefixes = JSON.parse(fs.readFileSync('./config/prefixes.json', 'utf8'));
 
     if (!prefixes[message.guild.id]) {
-        prefixes[message.guild.id] = "+r";//Your Prefix which will set to be defulat
+        prefixes[message.guild.id] = "-";//Your Prefix which will set to be defulat
         fs.writeFileSync('./config/prefixes.json', JSON.stringify(prefixes, null, 4), err => { });
     }
 
@@ -318,4 +319,5 @@ client.on('messageReactionRemove', async (reaction, user) => {
     }
 
 })
+
 
